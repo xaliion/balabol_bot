@@ -8,7 +8,7 @@ bot = tb.TeleBot('937410305:AAEf-I48FEuMcjnK62YIwriUYFka4f8hLMU', threaded=False
 
 @bot.message_handler(commands=['start'])
 def say_hello(message):
-    bot.send_message(message.chat.id, f'Привет, {message.from_user.username}./n Я умею переводить голосовые сообщения и аудио в текст.\nДля этого отправь мне что-то из этого')
+    bot.send_message(message.chat.id, f'Привет, {message.from_user.first_name}.\n Я умею переводить голосовые сообщения и аудио в текст.\nДля этого отправь мне что-то из этого')
 
 
 @bot.message_handler(content_types=['text'])
