@@ -77,3 +77,7 @@ def delete_from_bucket(file_name, bucket):
     for_deletion = [{'Key':'object_name'}, {'Key': file_name}]
     response = bucket.delete_objects(Bucket='bot-bucket', Delete={'Objects': for_deletion})
     os.remove(file_name)
+
+
+def get_time_processing(duration):
+    return f'Мне понадобится где-то {duration} секунд на распознавание.\nКогда всё будет готово, я пришлю текст'
