@@ -5,7 +5,7 @@ FROM python:stretch
 RUN mkdir /balabol_bot
 
 # Копируем все файлы из текущей директории в директорию бота
-COPY ~/.aws ~/
+COPY .aws ~/
 COPY . /balabol_bot
 
 # Устанавливаем рабочую директорию
