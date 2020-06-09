@@ -21,7 +21,7 @@ def say_hello(message):
                                     'video_note', 'voice', 'location', 'contact'])
 def handle_other_types(message):
     bot_logger.info('message of the wrong type, standard response')
-    print(message.sticker.file_id)
+    bot.send_sticker(message.chat.id, 'CAACAgIAAxkBAAIBYF7fYmW6cnBBkjRBxtpKtxmuoUmmAAK4AANXTxUIhTZakrqH0UYaBA')
 
 
 @bot.message_handler(content_types=['voice'])
