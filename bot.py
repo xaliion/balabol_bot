@@ -18,7 +18,7 @@ def say_hello(message):
 
 
 @bot.message_handler(content_types=['text', 'document', 'photo', 'sticker', 'video',
-                                    'video_note', 'voice', 'location', 'contact'])
+                                    'video_note', 'location', 'contact'])
 def handle_other_types(message):
     bot_logger.info('message of the wrong type, standard response')
     bot.send_sticker(message.chat.id, 'CAACAgIAAxkBAAIBYF7fYmW6cnBBkjRBxtpKtxmuoUmmAAK4AANXTxUIhTZakrqH0UYaBA')
