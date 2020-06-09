@@ -17,7 +17,7 @@ def say_hello(message):
     bot.send_message(message.chat.id, f'Привет, {message.from_user.first_name}.\nЯ умею переводить голосовые сообщения и аудио в текст.\nДля этого отправь мне что-то из этого')
 
 
-@bot.message_handler(content_types=['document', 'photo', 'sticker', 'video',
+@bot.message_handler(content_types=['text', 'document', 'photo', 'sticker', 'video',
                                     'video_note', 'voice', 'location', 'contact'])
 def handle_other_types(message):
     bot_logger.info('message of the wrong type, standard response')
