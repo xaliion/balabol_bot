@@ -75,7 +75,7 @@ def get_recognized_text(recognized_text):
 
 def delete_from_bucket(file_name, bucket):
     for_deletion = [{'Key':'object_name'}, {'Key': file_name}]
-    response = bucket.delete_objects(Bucket='bot-bucket', Delete={'Objects': for_deletion})
+    bucket.delete_objects(Bucket='bot-bucket', Delete={'Objects': for_deletion})
     os.remove(file_name)
 
 

@@ -7,8 +7,8 @@ import api
 bot = tb.TeleBot('937410305:AAEf-I48FEuMcjnK62YIwriUYFka4f8hLMU', threaded=False)
 bot_logger = logging.getLogger('bot')
 logging.basicConfig(filename='bot.log', level=logging.INFO,
-                    format='%%(asctime)s - %%(name)s - %%(levelname)s - %%(message)s\n',
-                    datefmt='%%d.%%m.%%Y %%H:%%M')
+                    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s\n',
+                    datefmt='%d.%m.%Y %H:%M')
 
 
 
@@ -28,9 +28,8 @@ def handle_other_types(message):
 def handle_voice(message):
     file_name = api.get_audio_from_user(bot, message.chat.id, message.voice.file_id)
     bucket_client = api.upload_to_bucket(file_name)
-    time_processing = api.get_time_processing(message.voice.duration)
-    bot.send_message(message.chat.id, time_processing)
-    bot_logger.info(f'voice message processing, approximate processing time - {time_processing} seconds')
+    bot.send_message(message.chat.id, api.get_time_processing(message.voice.duration))
+    bot_logger.info(f'voice message processing, approximate processing time - {message.voice.duration} seconds')
     response_from_yandex = api.request_to_yandex_ai(file_name)
     source_recognized_text = api.waiting_for_recognized_text(response_from_yandex)
     recognized_text = api.get_recognized_text(source_recognized_text)
@@ -43,9 +42,8 @@ def handle_audio(message):
     file_name = api.get_audio_from_user(bot, message.chat.id, message.audio.file_id)
     file_name = api.convert_to_ogg(file_name, message.chat.id)
     bucket_client = api.upload_to_bucket(file_name)
-    time_processing = api.get_time_processing(message.voice.duration)
-    bot.send_message(message.chat.id, time_processing)
-    bot_logger.info(f'voice message processing, approximate processing time - {time_processing} seconds')
+    bot.send_message(message.chat.id, api.get_time_processing(message.voice.duration))
+    bot_logger.info(f'voice message processing, approximate processing time - {message.voice.duration} seconds')
     response_from_yandex = api.request_to_yandex_ai(file_name)
     source_recognized_text = api.waiting_for_recognized_text(response_from_yandex)
     recognized_text = api.get_recognized_text(source_recognized_text)
