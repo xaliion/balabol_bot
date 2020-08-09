@@ -1,2 +1,2 @@
 # balabol_bot
-Бот транскрибатор
+Бот транскрибатор: [@TranscriptorBot](https://t.me/TranscriptorBot)
